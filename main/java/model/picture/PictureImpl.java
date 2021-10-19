@@ -8,6 +8,7 @@ package model.picture;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
+import model.ShapeType;
 import model.interfaces.Picture;
 import model.interfaces.Shape;
 
@@ -29,9 +30,11 @@ public class PictureImpl implements Picture {
   }
 
   @Override
-  public void draw(Graphics2D g) {
-    for (Shape s : elements) {
-      s.draw(g);
+  public void draw(Graphics2D graphic) {
+    for (Shape shape : elements) {
+     if (shape.getShapeType() == ShapeType.RECTANGLE) shape.drawRect(graphic);
+     if (shape.getShapeType() == ShapeType.ELLIPSE) shape.drawElli(graphic);
+     if (shape.getShapeType() == ShapeType.TRIANGLE) shape.drawTri(graphic);
     }
   }
 
